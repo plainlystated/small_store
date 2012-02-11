@@ -33,12 +33,10 @@ Products << Product.new(
   :title => "Flowering Vine Mirror",
   :section => Sections[:artistic_mirrors],
   :images => ["http://img2.etsystatic.com/il_fullxfull.305156954.jpg", "http://img2.etsystatic.com/il_570xN.305153786.jpg", "http://img3.etsystatic.com/il_fullxfull.305014315.jpg"],
-  :blurb => "This flowering fine mirror has beautifully engraved with leaves and petals.",
+  :blurb => "This flowering fine mirror is beautifully engraved with leaves and petals.",
   :description => ['This flowering vine mirror is a beautiful accent to any home. It is made from mirrored acrylic, so it is stronger, lighter, and more shatter-resistant than traditional glass, but just as reflective.', 
 'The suggested way to affix to your wall is with 3M Command Strips, which are safe for most wall covers (including paint).',
-'The piece measures approx. 9.5" x 4.75"',
-'You can find a similar item with a white backing here: http://www.etsy.com/listing/91064132/artistic-flower-mirror'
-],
+'The piece measures approx. 9.5" x 4.75"'],
   :price => 45,
   :shipping => {:us => 5, :everywhere => 10}
 )

@@ -25,5 +25,3 @@ Products << Product.new(
 )
 END
 end
-
-puts "done"

@@ -1,7 +1,8 @@
 <div class="product">
   <h1><%= title %></h1>
 
-  <div>
+  <div id="image-browser">
+    <span class="similar"><a href="<%= section.path %>">Similar Products</a></span>
     <div id="thumbs">
       <ul class="thumbs noscript">
         <% images.each do |path| %>
@@ -15,7 +16,7 @@
     </div>
     <div id="slideshow"></div>
   </div>
-  <div style="clear: all">
+  <div style="clear: both">
 
   <% description.each do |para| %>
     <p><%= para %></p>

@@ -7,6 +7,7 @@ LAYOUT_TEMPLATE = File.expand_path(File.join(File.dirname(__FILE__), 'views', 'l
 PRODUCT_TEMPLATE = File.expand_path(File.join(File.dirname(__FILE__), 'views', 'product.html.erb'))
 SECTION_TEMPLATE = File.expand_path(File.join(File.dirname(__FILE__), 'views', 'section.html.erb'))
 
+autoload :Resizer, File.expand_path(File.join(File.dirname(__FILE__), 'lib', 'resizer.rb'))
 autoload :Product, File.expand_path(File.join(File.dirname(__FILE__), 'lib', 'product.rb'))
 autoload :Section, File.expand_path(File.join(File.dirname(__FILE__), 'lib', 'section.rb'))
 
@@ -63,10 +64,20 @@ def generate_product_pages
   end
 end
 
+def resize_product_images
+  Resizer.originals do |file|
+    puts "original: #{file}"
+    Resizer.adjust_height(file, 'a')
+  end
+end
+
 delete_previous_generation
 copy_public_with_templating
 generate_section_pages
 generate_product_pages
+
+# resize_section_images
+resize_product_images
 
 if ARGV[0] == "server"
   require 'webrick'

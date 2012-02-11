@@ -178,14 +178,25 @@ img.thumb, a.thumb img {
   /* float: right; */
   width: 550;
   display: inline-block;
-  padding: 0 0 0 5px;
+  /* padding: 0 0 0 5px; */
+  padding: 0;
 }
 #thumbs {
-  width: 140;
+  width: 150;
   float: left;
 }
 
 #slideshow img {
   width:550px;
   margin: 0;
+}
+
+#image-browser {
+  margin-top: 1em;
+}
+
+span.similar {
+  float: right;
+  margin-top: -1em;
+  font-size: smaller;
 }
