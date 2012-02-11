@@ -1,0 +1,141 @@
+body {
+  padding: 0;
+  background: url(http://subtlepatterns.com/patterns/cubes.png);
+  font-family: helvetica;
+  font-weight: 300;
+  color: #111;
+}   
+
+body > div {
+  margin-top: 0;
+}
+
+.header {
+  margin: 0 0 5 0;
+  background-image: url("/img/sine-wave-repeat.png");
+  background-repeat: repeat-x;
+}
+
+.header .product-list {
+  padding-left: 0;
+  display:inline-block;
+}
+
+.product-list ul {
+  width: 20em;
+}
+
+.product-list ul li {
+  float: left;
+  width: 10em;
+}
+
+.product-list br {
+  clear: left;
+}
+
+.header li {
+  list-style-type: none;
+  font-size: smaller;
+}
+
+.header ul {
+  margin: 0 0 0 5px;
+  padding: 0;
+}
+
+.header .main {
+  margin-top: 0;
+}
+
+a {
+  text-decoration: none;
+  color: #43698a;
+}
+
+a.black {
+  color: black;
+}
+
+span.read-more {
+  font-size: smaller;
+}
+
+.creativeretrospection {
+  font-family: 'Rancho', cursive;
+  font-size: 50px;
+}
+
+h1 {
+  font-family: "Coda";
+  font-weight: normal;
+  font-size: 40px;
+  margin: 0 0 6 0;
+  line-height: 0.8;
+}   
+
+h2 {
+  font-family: "Coda";
+  margin: 0;
+  letter-spacing: 1px;
+  font-weight: 400;
+  font-size: 18px;
+}
+
+h2 + p {
+  margin-top: 0;
+}
+.tag-line {
+  letter-spacing: 2px;
+  margin: 0;
+  font-size: 20px;
+  font-weight: 400;
+}
+p:first-child, p.subheading {
+  margin: 0 0 1em 0;
+}
+p {
+  line-height: 27px;
+}
+div.main {
+  width: 700px;
+  margin: 0 auto;
+}
+img {
+  margin: 0 20px 10px 0;
+}
+img.main-left {
+  float: left;
+}
+img.main-right {
+  float: right;
+}
+img.main {
+  margin-top: 0;
+  width: 300;
+}
+
+.thumb {
+  margin: 0 0px 10px 20px;
+}
+
+img.thumb, a.thumb img {
+  /* width: 250; */
+  height: 150;
+  margin: 0 0 0 0;
+}
+
+div.product {
+  padding-top: 1em;
+  clear: both;
+}
+
+div.blurb {
+  /* border: thin solid black; */
+  /* padding: 0 1em 0 1em; */
+  padding: 0;
+  width: 49%;
+  display: inline-block;
+  vertical-align: top;
+  margin-bottom: 1em;
+}

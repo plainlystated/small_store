@@ -1,0 +1,13 @@
+<div class="product">
+  <h1><a href="<%= path %>" class="black"><%= title %></a></h1>
+  <p class="subheading"><%= description %></p>
+  <% products.each do |product| %>
+    <div class="product blurb">
+      <a href="<%= product.path %>">
+        <img src="<%= product.images.first %>" class="thumb">
+      </a>
+      <h2><a href="<%= product.path %>" class="black"><%= product.title %></a></h2>
+      <p><%= product.blurb %></p>
+    </div>
+  <% end %>
+</div>

@@ -1,0 +1,19 @@
+<% Sections.reject {|label, section| section.empty? }.each do |label, section| %>
+  <div class="product">
+    <a href="<%= section.path %>">
+      <img src="<%= section.image %>" class="main main-left">
+    </a>
+    <h1><a href="<%= section.path %>" class="black"><%= section.title %></a></h1>
+    <p><%= section.description %>
+      <span class="read-more"><a href="<%= section.path %>">Read more...</a></span>
+    </p>
+  </div>
+<% end %>
+
+<div class="product">
+  <img src="https://lh6.googleusercontent.com/-9RPMfI6s6Lo/TrXQIgi-iDI/AAAAAAAAIY4/H-tKvK26_aM/s300/me.jpg" class="main main-left">
+  <h1>About Me</h1>
+  <p>
+    My name is Patrick Schless. I handle every over, and I take personal responsibility for your satisfaction with any purchase you make on this site. If you have any questions, comments, or concerns, you can reach me <a href="mailto:creativeretrospection@plainlystated.com">by email</a>.
+  </p>
+</div>

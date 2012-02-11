@@ -1,0 +1,24 @@
+<html>
+  <head>
+    <title>Creative Retrospection<%= defined?(title) ? ": #{title}" : "" %></title>
+    <link href='http://fonts.googleapis.com/css?family=Rancho|Coda' rel='stylesheet' type='text/css'>
+    <link href='/styles/creativeretrospection.css' rel='stylesheet' type='text/css'>
+  </head>
+  <body>
+    <div class="header">
+      <div class="main">
+        <span class="creativeretrospection"><a class="black" href="/">Creative Retrospection</a></span>
+        <span class="product-list">
+          <ul
+            ><li>&#187; <a href="/state-mirrors/">State Mirrors</a></li
+            ><li>&#187; <a href="/android-mirrors/">Android Mirrors</a></li
+            ><li>&#187; <a href="/artistic-mirrors/">Artistic Mirrors</a></li
+          ></ul>
+        </span>
+      </div>
+    </div>
+    <div class="main">
+      <%= yield %>
+    </div>
+  </body>
+</html>
