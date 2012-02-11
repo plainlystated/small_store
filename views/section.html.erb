@@ -4,7 +4,7 @@
   <% products.each do |product| %>
     <div class="product blurb">
       <a href="<%= product.path %>">
-        <img src="<%= product.images.first %>" class="thumb">
+        <img src="<%= product.images.first %>" class="teaser">
       </a>
       <h2><a href="<%= product.path %>" class="black"><%= product.title %></a></h2>
       <p><%= product.blurb %></p>

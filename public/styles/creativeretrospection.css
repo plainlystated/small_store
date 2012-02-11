@@ -115,12 +115,11 @@ img.main {
   width: 300;
 }
 
-.thumb {
+img.teaser {
   margin: 0 0px 10px 20px;
 }
 
-img.thumb, a.thumb img {
-  /* width: 250; */
+img.teaser, a.teaser img {
   height: 150;
   margin: 0 0 0 0;
 }
@@ -138,4 +137,40 @@ div.blurb {
   display: inline-block;
   vertical-align: top;
   margin-bottom: 1em;
+}
+
+ul.thumbs {
+  clear: both;
+  margin: 0;
+  padding: 0;
+}
+ul.thumbs li {
+  float: left;
+  padding: 0;
+  margin: 5px 10px 5px 0;
+  list-style: none;
+}
+a.thumb {
+  padding: 2px;
+  display: block;
+  border: 1px solid #ccc;
+}
+ul.thumbs li.selected a.thumb {
+  background: #000;
+}
+a.thumb:focus {
+  outline: none;
+}
+ul.thumbs img {
+  border: none;
+  display: block;
+}
+
+img.thumb, a.thumb img {
+  height: 75;
+  margin: 0 0 0 0;
+}
+
+#slideshow img {
+  width:700px;
 }

@@ -54,10 +54,10 @@ def generate_section_pages
 end
 
 def generate_product_pages
-  [ ].each do |product|
-    section_dir = File.join(File.join(OUTPUT_DIR, product.section.slug))
-    Dir.mkdir(section_dir) unless File.directory?(section_dir)
-    File.open(File.join(section_dir, product.filename), "w") do |f|
+  Products.each do |product|
+    section_dir = File.join(File.join(OUTPUT_DIR, product.path))
+
+    File.open(File.join(OUTPUT_DIR, product.path), "w") do |f|
       f.write(render_with_layout(PRODUCT_TEMPLATE, product))
     end
   end
