@@ -1,18 +1,21 @@
 <div class="product">
   <h1><%= title %></h1>
 
-  <div id="thumbs">
-    <ul class="thumbs noscript">
-      <% images.each do |path| %>
-        <li>
-          <a class="thumb" href="<%= path %>" title="<%= title %>">
-            <img src="<%= path %>" alt="<%= title %>" />
-          </a>
-        </li>
-      <% end %>
-    </ul>
+  <div>
+    <div id="thumbs">
+      <ul class="thumbs noscript">
+        <% images.each do |path| %>
+          <li>
+            <a class="thumb" href="<%= path %>" title="<%= title %>">
+              <img src="<%= path %>" alt="<%= title %>" />
+            </a>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+    <div id="slideshow"></div>
   </div>
-  <div id="slideshow"></div>
+  <div style="clear: all">
 
   <% description.each do |para| %>
     <p><%= para %></p>

@@ -150,6 +150,9 @@ ul.thumbs li {
   margin: 5px 10px 5px 0;
   list-style: none;
 }
+ul.thumbs li:first-child {
+  margin-top: 0;
+}
 a.thumb {
   padding: 2px;
   display: block;
@@ -167,10 +170,22 @@ ul.thumbs img {
 }
 
 img.thumb, a.thumb img {
-  height: 50;
+  width: 120;
   margin: 0 0 0 0;
 }
 
+#slideshow {
+  /* float: right; */
+  width: 550;
+  display: inline-block;
+  padding: 0 0 0 5px;
+}
+#thumbs {
+  width: 140;
+  float: left;
+}
+
 #slideshow img {
-  width:700px;
+  width:550px;
+  margin: 0;
 }
