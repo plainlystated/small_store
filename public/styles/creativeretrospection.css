@@ -12,8 +12,6 @@ body > div {
 
 .header {
   margin: 0 0 5 0;
-  background-image: url("/img/sine-wave-repeat.png");
-  background-repeat: repeat-x;
 }
 
 .header .product-list {
