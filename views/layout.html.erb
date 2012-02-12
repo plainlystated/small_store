@@ -7,12 +7,18 @@
     <script type="text/javascript" src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
     <script type="text/javascript" src="/js/jquery.galleriffic.js"></script>
     <script type="text/javascript" src="/js/jquery.opacityrollover.js"></script>
+    <script type="text/javascript" src="/js/simpleCart.min.js"></script>
   </head>
 
   <body>
     <div class="header">
       <div class="main">
-        <span class="creativeretrospection"><a class="black" href="/">Creative Retrospection</a></span>
+        <div class="cart-summary">
+          <a href="/cart.html">Your cart</a> (<span class="simpleCart_quantity"></span> items) |
+          <a href="/cart.html">Checkout</a>
+        </div>
+
+        <div class="creativeretrospection"><a class="black" href="/">Creative Retrospection</a></div>
         <span class="product-list">
           <ul
             ><li>&#187; <a href="/state-mirrors/">State Mirrors</a></li
@@ -20,10 +26,30 @@
             ><li>&#187; <a href="/artistic-mirrors/">Artistic Mirrors</a></li
           ></ul>
         </span>
+
       </div>
     </div>
     <div class="main">
       <%= yield %>
     </div>
+  <script>
+    simpleCart.email = "paypal@plainlystated.com";
+    simpleCart.cartHeaders = ["Name", "Image_image", "Price", "Remove"];
+
+    CartItem.prototype.shipping=function(){
+      if(this.size){
+        if( this.size == 'small' ){
+            return this.quantity*5.00;
+          } else if( this.size == 'medium') {
+            return this.quantity*7.50;
+          } else {
+            return this.quantity*10.00;
+          }
+        } else {
+          // use a default of $2.00 per item if there is no 'size' field
+          return this.quantity*5.00;
+        }
+      }
+  </script>
   </body>
 </html>

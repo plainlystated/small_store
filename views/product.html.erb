@@ -1,14 +1,14 @@
-<div class="product">
-  <h1><%= title %></h1>
+<div class="product simpleCart_shelfItem">
+  <h1 class="item_name"><%= title %></h1>
 
   <div id="image-browser">
     <span class="similar"><a href="<%= section.path %>">Similar Products</a></span>
     <div id="thumbs">
       <ul class="thumbs noscript">
-        <% images.each do |path| %>
+        <% images.each_with_index do |path, i| %>
           <li>
             <a class="thumb" href="<%= path %>" title="<%= title %>">
-              <img src="<%= path %>" alt="<%= title %>" />
+              <img src="<%= path %>" alt="<%= title %>" class="<%= i == 0 ? "item_image" : "" %>" />
             </a>
           </li>
         <% end %>
@@ -16,7 +16,15 @@
     </div>
     <div id="slideshow"></div>
   </div>
-  <div style="clear: both">
+  <div class="clear"></div>
+  <span class="pricetag">
+    <span class="price"><label>Price:</label> <span class="item_price">$<%= price %></span></span>
+  </span>
+  <span class="pricetag">
+    <a href="/cart.html" class="item_add">Add to Cart</a>
+  </span>
+  <div class="clear"></div>
+
 
   <% description.each do |para| %>
     <p><%= para %></p>

@@ -19,17 +19,14 @@ body > div {
   display:inline-block;
 }
 
-.product-list ul {
-  width: 20em;
+.product-list li {
+  display: inline;
+  padding-left: 3px;
+  padding-right: 12px;
 }
 
-.product-list ul li {
-  float: left;
-  width: 10em;
-}
-
-.product-list br {
-  clear: left;
+.product-list li:first-child {
+  padding-left: 0;
 }
 
 .header li {
@@ -38,12 +35,17 @@ body > div {
 }
 
 .header ul {
-  margin: 0 0 0 5px;
+  margin: 0;
   padding: 0;
 }
 
 .header .main {
   margin-top: 0;
+}
+
+div.cart-summary {
+  float: right;
+  font-size: smaller;
 }
 
 a {
@@ -197,4 +199,59 @@ span.similar {
   float: right;
   margin-top: -1em;
   font-size: smaller;
+}
+
+span.price {
+  font-family: "Coda";
+  margin: 0;
+  letter-spacing: 1px;
+  font-weight: 400;
+  font-size: 18px;
+}
+span.pricetag {
+  float: right;
+  clear: both;
+}
+
+#cart-details a.simpleCart_checkout {
+  font-weight: 400;
+}
+
+.cartHeaders {
+  display: none;
+}
+
+.itemContainer{
+  float:left;
+  width:110px;
+  text-align:center;
+  margin-right:25px;
+  position:relative;
+  bottom:0;
+}
+.itemthumb{
+  float:none;
+  margin:0;
+  padding-top:5px;
+}
+.itemTotal{
+  margin:8px 0 0 0;
+  padding:0;
+  clear:both;
+}
+
+.itemImage img {
+  width: 120;
+}
+
+#cart-details {
+  margin-top: 1em;
+}
+
+#cart-details .actions {
+  margin-bottom: 1em;
+}
+
+div.clear {
+  clear: both;
 }
