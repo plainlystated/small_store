@@ -7,6 +7,7 @@ class Product
     RequiredAttrs.each do |attr|
       self.send(:"#{attr}=", options.fetch(attr))
     end
+    @slug = options[:slug] if options.has_key?(:slug)
   end
 
   def filename
@@ -18,6 +19,6 @@ class Product
   end
 
   def slug
-    title.downcase.gsub(/\W/, '-')
+    @slug || title.downcase.gsub(/\W/, '-')
   end
 end

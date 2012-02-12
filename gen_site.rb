@@ -48,7 +48,12 @@ end
 def generate_section_pages
   Sections.each do |label, section|
     Dir.mkdir(File.join(OUTPUT_DIR, section.path))
-    File.open(File.join(OUTPUT_DIR, section.path, "index.html"), "w") do |file|
+    output_file = File.join(OUTPUT_DIR, section.path, "index.html")
+    if File.exists?(output_file)
+      raise "duplicate file #{output_file}"
+    end
+
+    File.open(output_file, "w") do |file|
       file.write render_with_layout(SECTION_TEMPLATE, section)
     end
   end
@@ -56,18 +61,14 @@ end
 
 def generate_product_pages
   Products.each do |product|
-    section_dir = File.join(File.join(OUTPUT_DIR, product.path))
+    output_file = File.join(OUTPUT_DIR, product.path)
+    if File.exists?(output_file)
+      raise "duplicate file #{output_file}"
+    end
 
-    File.open(File.join(OUTPUT_DIR, product.path), "w") do |f|
+    File.open(output_file, "w") do |f|
       f.write(render_with_layout(PRODUCT_TEMPLATE, product))
     end
-  end
-end
-
-def resize_product_images
-  Resizer.originals do |file|
-    puts "original: #{file}"
-    Resizer.adjust_height(file, 'a')
   end
 end
 
@@ -77,7 +78,7 @@ generate_section_pages
 generate_product_pages
 
 # resize_section_images
-resize_product_images
+#resize_product_images
 
 if ARGV[0] == "server"
   require 'webrick'

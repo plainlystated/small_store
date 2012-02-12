@@ -8,11 +8,12 @@ Etsy.environment = :production
 user = Etsy.user('plainlystated')
 
 File.open(OUTPUT_FILE, "w") do |out|
-  listing = user.shop.listings.first
-
-  description = listing.description.split(/[\n\r]/).reject(&:empty?)
-  images = listing.images.map(&:full)
-  out.puts <<END
+  # listing = user.shop.listings.first
+  listings = user.shop.listings
+  listings.each do |listing|
+    description = listing.description.split(/[\n\r]/).reject(&:empty?)
+    images = listing.images.map(&:full)
+    out.puts <<END
 Products << Product.new(
   :title => "#{listing.title}",
   :section => Sections[:state_mirrors],
@@ -24,4 +25,8 @@ Products << Product.new(
   :size => nil
 )
 END
+  end
+
+  puts "Imported #{listings.size} listings"
 end
+
