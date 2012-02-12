@@ -1,5 +1,5 @@
 Products << Product.new(
-  :title => "Android Wall Mirror",
+  :title => "Android&trade; Wall Mirror",
   :section => Sections[:android_mirrors],
   :images => ["http://img2.etsystatic.com/il_fullxfull.306576138.jpg", "http://img1.etsystatic.com/il_fullxfull.306438505.jpg", "http://img3.etsystatic.com/il_fullxfull.306438755.jpg", "http://img1.etsystatic.com/il_fullxfull.306438701.jpg"],
   :blurb => "Andy on the side.",
@@ -21,7 +21,7 @@ Products << Product.new(
   :size => nil
 )
 Products << Product.new(
-  :title => "Android Wall Mirror",
+  :title => "Android&trade; Wall Mirror",
   :section => Sections[:android_mirrors],
   :slug => "android-wall-mirror-bottom",
   :images => ["http://img1.etsystatic.com/il_fullxfull.306437101.jpg", "http://img2.etsystatic.com/il_fullxfull.306574450.jpg", "http://img3.etsystatic.com/il_fullxfull.306435103.jpg", "http://img1.etsystatic.com/il_fullxfull.306437029.jpg", "http://img3.etsystatic.com/il_fullxfull.306437043.jpg"],
