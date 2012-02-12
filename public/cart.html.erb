@@ -1,10 +1,33 @@
 <div id="cart-details">
   <h1>Your Cart</h1>
-  <div class="actions">
+  <div class="actions" style="display:none">
     <a href="javascript:;" class="simpleCart_checkout">Pay with PayPal</a> |
-    <a href="javascript:;" class="simpleCart_checkout">Pay with Google Checkout</a> |
     <a href="javascript:;" class="simpleCart_empty">Empty Cart</a>
   </div>
 
   <div class="simpleCart_items"></div>
+
+  <script>
+    jQuery(document).ready(function($) {
+      simpleCart.email = "paypal@plainlystated.com";
+      CartItem.prototype.shipping=function(){
+        if(this.size){
+          if( this.size == 'small' ){
+              return this.quantity*5.00;
+            } else if( this.size == 'medium') {
+              return this.quantity*7.50;
+            } else {
+              return this.quantity*10.00;
+            }
+          } else {
+            // use a default of $2.00 per item if there is no 'size' field
+            return this.quantity*5.00;
+          }
+        }
+
+      ShoppingCartCheckout.initCartSummary();
+    });
+
+    simpleCart.cartHeaders = ["Name", "Image_image", "Price", "Remove"];
+  </script>
 </div>

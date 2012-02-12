@@ -2,10 +2,10 @@ require 'etsy'
 
 OUTPUT_FILE = File.join(File.dirname(__FILE__), "config", "products", "from_etsy.rb")
 
-Etsy.api_key = '98n6n3bh8132nk2uu8dgbe8v'
+Etsy.api_key = ''
 Etsy.environment = :production
 
-user = Etsy.user('plainlystated')
+user = Etsy.user('username')
 
 File.open(OUTPUT_FILE, "w") do |out|
   # listing = user.shop.listings.first

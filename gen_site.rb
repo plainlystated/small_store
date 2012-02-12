@@ -34,6 +34,12 @@ def copy_public_with_templating
     Dir["**/*"].each do |input_file|
       if File.directory?(input_file)
         Dir.mkdir(File.join(OUTPUT_DIR, input_file))
+      elsif input_file =~ /\.coffee$/
+        puts "compiling coffeescript"
+        puts `coffee -c #{input_file}`
+        js_file = input_file.sub(/coffee$/, 'js')
+
+        FileUtils.mv js_file, File.join(OUTPUT_DIR, js_file)
       elsif input_file =~ /\.erb$/
         File.open(File.join(OUTPUT_DIR, input_file.sub(/\.erb$/, '')), "w") do |output_file|
           output_file.write render_with_layout(input_file)
