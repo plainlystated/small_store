@@ -1,0 +1,5 @@
+SmallStore converts a list of products into a complete eCommerce site. It generates static HTML files, and uses a javascript shopping cart.
+
+It was written for http://www.creativeretrospection.com, and you can see it in action there. This project is under active development. Pull requests are welcome!
+
+There's not much documentation yet. Check out small_store.rb if you want to go code spelunking.
