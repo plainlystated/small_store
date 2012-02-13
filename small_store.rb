@@ -15,6 +15,9 @@ autoload :Section, File.expand_path(File.join(File.dirname(__FILE__), 'lib', 'se
 autoload :Sections, File.expand_path(File.join(File.dirname(__FILE__), 'config', 'sections.rb'))
 autoload :Products, File.expand_path(File.join(File.dirname(__FILE__), 'config', 'products.rb'))
 
+autoload :AboutMe, File.expand_path(File.join(File.dirname(__FILE__), 'config', 'about_me.rb'))
+autoload :GoogleAnalyticsAccount, File.expand_path(File.join(File.dirname(__FILE__), 'config', 'google_analytics_account.rb'))
+
 def render_with_layout(file, context = {})
   template = Tilt.new(LAYOUT_TEMPLATE)
   template.render(context) do
