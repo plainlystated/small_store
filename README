@@ -13,7 +13,7 @@ To get your own site up and running, check out the examples under config/. You'l
 
 There's not much documentation yet. Check out small_store.rb if you want to go code spelunking.
 
-This project is being developed with my www.creativeretrospection.com's specific features in mind, but if you want to contribute, feel free to drop me a pull request (rather than a feature request). :)
+This project is being developed with features specific to www.creativeretrospection.com in mind, but if you want to contribute, feel free to drop me a pull request (rather than a feature request). :)
 
 Much thanks to wojodesign for his really nice JS shopping cart (https://github.com/wojodesign/simplecart-js).
 
