@@ -28,7 +28,6 @@
     </div>
     <div class="pay-actions">
       <%# <a href="javascript:;" class="simpleCart_checkout">Pay with PayPal</a>%>
-      <a id="buy-here" href="#" class="buy-now" style="display:none">Buy here</a>
       <a id="buy-paypal" href="#" class="buy-now" style="display:none">Buy with PayPal</a>
       <a id="buy-googlecheckout" href="#" class="buy-now" style="display:none">Buy with<br />Google Checkout</a>
     </div>
@@ -39,6 +38,7 @@
   <script>
     jQuery(document).ready(function($) {
       simpleCart.email = "paypal@plainlystated.com";
+      simpleCart.merchantId = "333554820991882";
 
       ShoppingCartCheckout.init();
     });

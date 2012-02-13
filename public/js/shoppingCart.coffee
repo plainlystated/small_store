@@ -18,6 +18,12 @@ ShoppingCartCheckout =
     )
     this.update()
 
+    $('#buy-paypal').click ->
+      simpleCart.paypalCheckout()
+
+    $('#buy-googlecheckout').click ->
+      simpleCart.googleCheckout()
+
   calculateShipping: () ->
     shippingTo = $('#shipping-to input:checked').val()
     if shippingTo == undefined
