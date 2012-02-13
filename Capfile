@@ -13,5 +13,5 @@ task :setup do
 end
 
 task :deploy do
-  `ruby gen_site.rb && rsync -avz --delete _web/ lithium:#{app_dir}`
+  `ruby small_store.rb && rsync -avz --delete _web/ lithium:#{app_dir}`
 end
