@@ -1,5 +1,24 @@
-SmallStore converts a list of products into a complete eCommerce site. It generates static HTML files, and uses a javascript shopping cart.
+SmallStore converts a list of products into a complete eCommerce site. It generates static HTML files, and uses a javascript shopping cart. It calculates tax and shipping based on product configs, and gives the customer the option to pay with PayPal or Google Checkout.
 
-It was written for http://www.creativeretrospection.com, and you can see it in action there. This project is under active development. Pull requests are welcome!
+It supports just about any templating engine you want (using Tilt), and it will compile coffeescript for you, too.
+
+It was written for http://www.creativeretrospection.com, and you can see it in action there.
+
+To get your own site up and running, check out the examples under config/. You'll need to have:
+
+ * config/sections.rb
+ * config/products/something.rb
+ * config/about_me.rb
+ * config/google_analytics_account.rb
 
 There's not much documentation yet. Check out small_store.rb if you want to go code spelunking.
+
+This project is being developed with my www.creativeretrospection.com's specific features in mind, but if you want to contribute, feel free to drop me a pull request (rather than a feature request). :)
+
+Much thanks to wojodesign for his really nice JS shopping cart (https://github.com/wojodesign/simplecart-js).
+
+Upcoming features:
+
+ * Resize images for the various sizes required
+ * minify javascript, CSS
+ * use something better than straight-up CSS
