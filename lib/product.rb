@@ -1,5 +1,5 @@
 class Product
-  RequiredAttrs = [:title, :images, :description, :price, :shipping, :section, :blurb]
+  RequiredAttrs = [:title, :images, :description, :price, :shipping, :section, :blurb, :size]
 
   attr_accessor *RequiredAttrs
 

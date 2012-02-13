@@ -1,8 +1,37 @@
 <div id="cart-details">
   <h1>Your Cart</h1>
-  <div class="actions" style="display:none">
-    <a href="javascript:;" class="simpleCart_checkout">Pay with PayPal</a> |
-    <a href="javascript:;" class="simpleCart_empty">Empty Cart</a>
+  <div class="checkout-form">
+    <table class="cart-total">
+      <tr>
+        <td class="label">Products:</td>
+        <td class="value simpleCart_total"></td>
+      </tr>
+      <tr class="shipping-based">
+        <td class="label">Tax:</td>
+        <td class="value taxCost"></td>
+      </tr>
+      <tr class="shipping-based">
+        <td class="label">Shipping:</td>
+        <td class="value shippingCost"></td>
+      </tr>
+      <tr class="shipping-based">
+        <td class="label">Total:</td>
+        <td class="value simpleCart_finalTotal"></td>
+      </tr>
+    </table>
+
+    <div id="shipping-to" style="display:none">
+      <strong>Where is this being shipped?</strong>
+      <input type="radio" name="shipping-to" value="illinois"> Illinois<br />
+      <input type="radio" name="shipping-to" value="usa"> USA (but not IL)<br />
+      <input type="radio" name="shipping-to" value="world"> Outside the US<br />
+    </div>
+    <div class="pay-actions">
+      <%# <a href="javascript:;" class="simpleCart_checkout">Pay with PayPal</a>%>
+      <a id="buy-here" href="#" class="buy-now" style="display:none">Buy here</a>
+      <a id="buy-paypal" href="#" class="buy-now" style="display:none">Buy with PayPal</a>
+      <a id="buy-googlecheckout" href="#" class="buy-now" style="display:none">Buy with<br />Google Checkout</a>
+    </div>
   </div>
 
   <div class="simpleCart_items"></div>
@@ -10,24 +39,40 @@
   <script>
     jQuery(document).ready(function($) {
       simpleCart.email = "paypal@plainlystated.com";
-      CartItem.prototype.shipping=function(){
-        if(this.size){
-          if( this.size == 'small' ){
-              return this.quantity*5.00;
-            } else if( this.size == 'medium') {
-              return this.quantity*7.50;
-            } else {
-              return this.quantity*10.00;
-            }
-          } else {
-            // use a default of $2.00 per item if there is no 'size' field
-            return this.quantity*5.00;
-          }
-        }
 
-      ShoppingCartCheckout.initCartSummary();
+      ShoppingCartCheckout.init();
     });
 
     simpleCart.cartHeaders = ["Name", "Image_image", "Price", "Remove"];
+    CartItem.prototype.shipping=function() {
+      if(this.size){
+        if( this.size == 'small' ){
+            return this.quantity*5;
+          } else if( this.size == 'medium') {
+            return this.quantity*7;
+          } else {
+            return this.quantity*10.00;
+          }
+        } else {
+          return this.quantity*5.00;
+        }
+      }
+      simpleCart.shipping = function() {
+        var mostExpensiveShippingCost = 0;
+
+        for (var itemName in simpleCart.items) {
+          itemShippingCost = simpleCart.items[itemName].shipping();
+          if (itemShippingCost > mostExpensiveShippingCost) {
+            mostExpensiveShippingCost = itemShippingCost;
+          }
+        }
+        if (ShoppingCartCheckout.shippingDomesticly == undefined) {
+          return 0;
+        } else if (ShoppingCartCheckout.shippingDomesticly) {
+          return mostExpensiveShippingCost;
+        } else {
+          return mostExpensiveShippingCost * 2;
+        }
+      }
   </script>
 </div>

@@ -1,7 +1,6 @@
 require 'fileutils'
 require 'erb'
 require 'tilt'
-require 'ostruct'
 
 OUTPUT_DIR = File.expand_path(File.join(File.dirname(__FILE__), "_web"))
 LAYOUT_TEMPLATE = File.expand_path(File.join(File.dirname(__FILE__), 'views', 'layout.html.erb'))
@@ -15,9 +14,9 @@ autoload :Section, File.expand_path(File.join(File.dirname(__FILE__), 'lib', 'se
 autoload :Sections, File.expand_path(File.join(File.dirname(__FILE__), 'config', 'sections.rb'))
 autoload :Products, File.expand_path(File.join(File.dirname(__FILE__), 'config', 'products.rb'))
 
-def render_with_layout(file, context = {})
+def render_with_layout(file, context = {}, layout_context = {})
   template = Tilt.new(LAYOUT_TEMPLATE)
-  template.render(context) do
+  template.render(layout_context) do
     Tilt.new(file).render(context)
   end
 end
@@ -33,6 +32,7 @@ end
 def copy_public_with_templating
   Dir.chdir(File.join(File.dirname(__FILE__), 'public')) do
     Dir["**/*"].each do |input_file|
+      puts input_file
       if File.directory?(input_file)
         Dir.mkdir(File.join(OUTPUT_DIR, input_file))
       elsif input_file =~ /\.coffee$/
@@ -42,13 +42,9 @@ def copy_public_with_templating
 
         FileUtils.mv js_file, File.join(OUTPUT_DIR, js_file)
       elsif input_file =~ /\.erb$/
-        if input_file == "index.html.erb"
-          context = OpenStruct.new(:min_js_includes => true)
-        else
-          context = OpenStruct.new
-        end
+        p input_file
         File.open(File.join(OUTPUT_DIR, input_file.sub(/\.erb$/, '')), "w") do |output_file|
-          output_file.write render_with_layout(input_file, context)
+          output_file.write render_with_layout(input_file)
         end
       else
         FileUtils.cp input_file, File.join(OUTPUT_DIR, input_file)

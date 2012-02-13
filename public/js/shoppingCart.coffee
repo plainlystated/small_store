@@ -1,34 +1,78 @@
 root = exports ? this
 
 ShoppingCartCheckout =
-  updateCheckoutLinks: () ->
-    if simpleCart.quantity > 0
-      $('#cart-details .actions').show()
-      console.log('update checkout links: not empty')
-    else
-      $('#cart-details .actions').hide()
-      console.log('update checkout links: empty')
-    ShoppingCartSummary.updateHeaderLinks()
+  shippingDomesticly: undefined
 
-  initCartSummary: () ->
-    this.updateCheckoutLinks()
-
+  init: () ->
     $('#cart-details .simpleCart_empty').click( =>
-      this.updateCheckoutLinks()
+      this.update()
     )
 
     $('#cart-details .itemRemove a').click( =>
-      this.updateCheckoutLinks()
+      this.update()
     )
+
+    $('#shipping-to input').click( =>
+      console.log('updateing')
+      this.update()
+    )
+    this.update()
+
+  calculateShipping: () ->
+    shippingTo = $('#shipping-to input:checked').val()
+    if shippingTo == undefined
+      return false
+
+    if shippingTo == 'world'
+      this.shippingDomesticly = false
+    else
+      this.shippingDomesticly = true
+    simpleCart.shipping()
+
+  currency: (number) ->
+    "$" + parseFloat(number).toFixed(2)
+
+  updateTax: () ->
+    shippingTo = $('#shipping-to input:checked').val()
+    if shippingTo == undefined
+      $('.taxCost').html("")
+      return
+
+    if shippingTo == 'illinois'
+      simpleCart.taxRate = 0.095
+    else
+      simpleCart.taxRate = 0
+    $('.taxCost').html(this.currency(simpleCart.taxRate * simpleCart.total))
+
+  update: () ->
+    this.updateTax()
+    
+    shippingCost = this.calculateShipping()
+    if shippingCost
+      $('.shippingCost').html(this.currency(shippingCost))
+    else
+      $('.shippingCost').html("")
+
+    simpleCart.update()
+    if simpleCart.quantity > 0
+      $('#shipping-to').show()
+    else
+      $('#shipping-to').hide()
+
+    if $('#shipping-to input:checked').size() > 0
+      $('.cart-total .shipping-based').show()
+      $('#cart-details .pay-actions a').show()
+    else
+      $('.cart-total .shipping-based value').html(" ")
+      $('#cart-details .pay-actions a').hide()
+    ShoppingCartSummary.updateHeaderLinks()
 
 ShoppingCartSummary =
   updateHeaderLinks: () ->
     if simpleCart.quantity > 0
-      console.log('update summary links: not empty')
       $('.cart-summary .empty').hide()
       $('.cart-summary .not-empty').show()
     else
-      console.log('update summary links: empty')
       $('.cart-summary .not-empty').hide()
       $('.cart-summary .empty').show()
 

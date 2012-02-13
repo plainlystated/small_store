@@ -70,7 +70,7 @@ h1 {
   font-family: "Coda";
   font-weight: normal;
   font-size: 40px;
-  margin: 0 0 6 0;
+  margin: 0 0 10 0;
   line-height: 0.8;
 }   
 
@@ -248,10 +248,67 @@ span.pricetag {
   margin-top: 1em;
 }
 
-#cart-details .actions {
-  margin-bottom: 1em;
-}
-
 div.clear {
   clear: both;
 }
+
+.checkout-form {
+  width: 30%;
+  float: left;
+}
+.cart-total td.label {
+  font-weight: 800;
+  width: 8em;
+}
+.cart-total .value {
+  letter-spacing: 1px;
+}
+
+.simpleCart_items {
+  float: left;
+  width: 70%;
+}
+.simpleCart_finalTotal {
+  font-weight: 400;
+}
+
+#shipping-to {
+  margin-top: 0.5em;
+}
+
+.checkout-form .pay-actions {
+  margin-top: 1em;
+}
+
+/* payment buttons */
+.buy-now {
+  -moz-box-shadow:inset 0px 1px 0px 0px #f29c93;
+  -webkit-box-shadow:inset 0px 1px 0px 0px #f29c93;
+  box-shadow:inset 0px 1px 0px 0px #f29c93;
+  background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #fe1a00), color-stop(1, #ce0100) );
+  background:-moz-linear-gradient( center top, #fe1a00 5%, #ce0100 100% );
+  filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#fe1a00', endColorstr='#ce0100');
+  background-color:#fe1a00;
+  -moz-border-radius:6px;
+  -webkit-border-radius:6px;
+  border-radius:6px;
+  border:1px solid #d83526;
+  display:inline-block;
+  color:#ffffff;
+  font-family:arial;
+  font-size:15px;
+  font-weight:bold;
+  padding:6px 24px;
+  text-decoration:none;
+  text-shadow:1px 1px 0px #b23e35;
+  margin-top: 10;
+}.buy-now:hover {
+  background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #ce0100), color-stop(1, #fe1a00) );
+  background:-moz-linear-gradient( center top, #ce0100 5%, #fe1a00 100% );
+  filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#ce0100', endColorstr='#fe1a00');
+  background-color:#ce0100;
+}.buy-now:active {
+  position:relative;
+  top:1px;
+}
+/* end payment buttons */
