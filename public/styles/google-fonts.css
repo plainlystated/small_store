@@ -1,0 +1,12 @@
+@font-face {
+  font-family: 'Rancho';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Rancho'), url('/fonts/rancho.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'Coda';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Coda Regular'), local('Coda-Regular'), url('/fonts/coda.ttf') format('truetype');
+}
