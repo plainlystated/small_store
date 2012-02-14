@@ -1,17 +1,9 @@
 <html>
   <head>
     <title>Creative Retrospection<%= defined?(title) ? ": #{title}" : "" %></title>
-    <link href='/styles/google-fonts.css' rel='stylesheet' type='text/css'>
-    <link href='/styles/creativeretrospection.css' rel='stylesheet' type='text/css'>
+    <link href='/styles/creativeretrospection-min.css' rel='stylesheet' type='text/css'>
 
-    <script type="text/javascript" src="/js/jquery-1.7.1.min.js"></script>
-    <script type="text/javascript" src="/js/simpleCart.min.js"></script>
-    <script type="text/javascript" src="/js/shoppingCart.js"></script>
-    <% unless defined?(min_js_includes) && min_js_includes %>
-      <script type="text/javascript" src="/js/jquery.galleriffic.js"></script>
-      <script type="text/javascript" src="/js/jquery.opacityrollover.js"></script>
-      <script type="text/javascript" src="/js/jquery-ui-1.8.17.custom.min.js"></script>
-    <% end %>
+    <script type="text/javascript" src="/js/creativeretrospection-min.js"></script>
 
     <script type="text/javascript">
       var _gaq = _gaq || [];

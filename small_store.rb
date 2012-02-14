@@ -87,10 +87,30 @@ def generate_product_pages
   end
 end
 
+def minify
+  js_content = "cat #{OUTPUT_DIR}/js/*js"
+  lines_before = `#{js_content} | wc -c`.to_i
+  `#{js_content} | java -jar lib/yuicompressor-2.4.7.jar --type js > #{OUTPUT_DIR}/js/creativeretrospection-min.js`
+  lines_after = `cat #{OUTPUT_DIR}/js/creativeretrospection-min.js | wc -c`.to_i
+
+  improvement = (lines_before - lines_after).to_f / lines_before * 100
+  puts "Minified JS by #{"%.2f" % improvement}%"
+
+  css_content = "cat #{OUTPUT_DIR}/styles/*css"
+  lines_before = `#{css_content} | wc -c`.to_i
+  `#{css_content} | java -jar lib/yuicompressor-2.4.7.jar --type css > #{OUTPUT_DIR}/styles/creativeretrospection-min.css`
+  lines_after = `cat #{OUTPUT_DIR}/styles/creativeretrospection-min.css | wc -c`.to_i
+
+  improvement = (lines_before - lines_after).to_f / lines_before * 100
+  puts "Minified CSS by #{"%.2f" % improvement}%"
+end
+
 delete_previous_generation
 copy_public_with_templating
 generate_section_pages
 generate_product_pages
+
+minify
 
 # resize_section_images
 #resize_product_images
