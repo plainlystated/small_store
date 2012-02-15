@@ -87,22 +87,37 @@ def generate_product_pages
   end
 end
 
+def _minify(type, output_filename = nil, files = nil)
+  content_dir = type == "css" ? "styles" : type
+  output_dir = "#{OUTPUT_DIR}/#{content_dir}/min"
+  output_filename ||= "creativeretrospection-min.#{type}"
+  output_filename = "#{output_dir}/#{output_filename}"
+  Dir.mkdir(output_dir) unless File.exists?(output_dir)
+
+  if files
+    content = "cat #{files.map {|f| "#{OUTPUT_DIR}/#{content_dir}/#{f}"}.join(" ")}"
+  else
+    content = "cat #{OUTPUT_DIR}/#{content_dir}/*#{type}"
+  end
+  yui_compress = "java -jar lib/yuicompressor-2.4.7.jar --type #{type}"
+
+  lines_before = `#{content} | wc -c`.to_i
+  `#{content} | #{yui_compress} > #{output_filename}`
+  lines_after = `cat #{output_filename} | wc -c`.to_i
+
+  improvement = (lines_before - lines_after).to_f / lines_before * 100
+  puts "Minified #{type.upcase} by #{"%.2f" % improvement}%"
+end
+
 def minify
-  js_content = "cat #{OUTPUT_DIR}/js/*js"
-  lines_before = `#{js_content} | wc -c`.to_i
-  `#{js_content} | java -jar lib/yuicompressor-2.4.7.jar --type js > #{OUTPUT_DIR}/js/creativeretrospection-min.js`
-  lines_after = `cat #{OUTPUT_DIR}/js/creativeretrospection-min.js | wc -c`.to_i
-
-  improvement = (lines_before - lines_after).to_f / lines_before * 100
-  puts "Minified JS by #{"%.2f" % improvement}%"
-
-  css_content = "cat #{OUTPUT_DIR}/styles/*css"
-  lines_before = `#{css_content} | wc -c`.to_i
-  `#{css_content} | java -jar lib/yuicompressor-2.4.7.jar --type css > #{OUTPUT_DIR}/styles/creativeretrospection-min.css`
-  lines_after = `cat #{OUTPUT_DIR}/styles/creativeretrospection-min.css | wc -c`.to_i
-
-  improvement = (lines_before - lines_after).to_f / lines_before * 100
-  puts "Minified CSS by #{"%.2f" % improvement}%"
+  js_minimal_files = %w[
+    jquery-1.7.1.min.js
+    simpleCart.min.js
+    shoppingCart.js
+  ]
+  _minify('js', 'creativeretrospection-minimal-min.js', js_minimal_files)
+  _minify('js')
+  _minify('css')
 end
 
 delete_previous_generation
