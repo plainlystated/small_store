@@ -13,7 +13,6 @@ ShoppingCartCheckout =
     )
 
     $('#shipping-to input').click( =>
-      console.log('updateing')
       this.update()
     )
     this.update()
