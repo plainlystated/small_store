@@ -15,7 +15,7 @@ class Product
   end
 
   def path
-    "#{section.path}#{slug}.html"
+    "#{section.path}product/#{slug}.html"
   end
 
   def slug

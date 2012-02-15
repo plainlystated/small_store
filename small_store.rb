@@ -62,7 +62,7 @@ end
 
 def generate_section_pages
   Sections.each do |label, section|
-    Dir.mkdir(File.join(OUTPUT_DIR, section.path))
+    FileUtils.mkdir_p(File.join(OUTPUT_DIR, section.path))
     output_file = File.join(OUTPUT_DIR, section.path, "index.html")
     if File.exists?(output_file)
       raise "duplicate file #{output_file}"
@@ -77,6 +77,7 @@ end
 def generate_product_pages
   Products.each do |product|
     output_file = File.join(OUTPUT_DIR, product.path)
+    FileUtils.mkdir_p(File.dirname(output_file))
     if File.exists?(output_file)
       raise "duplicate file #{output_file}"
     end
