@@ -1,7 +1,7 @@
 <% Sections.reject {|label, section| section.empty? }.each do |label, section| %>
   <div class="product">
     <a href="<%= section.path %>">
-      <img src="<%= section.image_path %>" class="main main-left">
+      <img src="<%= asset section.image_path %>" class="main main-left">
     </a>
     <h1><a href="<%= section.path %>" class="black"><%= section.title %></a></h1>
     <p><%= section.description %>
@@ -11,7 +11,7 @@
 <% end %>
 
 <div class="product">
-  <img src="/images/me.jpg" class="main main-left">
+  <img src="<%= asset "/images/me.jpg" %>" class="main main-left">
   <h1>About Me</h1>
   <p><%= AboutMe %></p>
 </div>

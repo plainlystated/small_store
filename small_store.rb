@@ -17,11 +17,32 @@ autoload :Products, File.expand_path(File.join(File.dirname(__FILE__), 'config',
 
 autoload :AboutMe, File.expand_path(File.join(File.dirname(__FILE__), 'config', 'about_me.rb'))
 autoload :GoogleAnalyticsAccount, File.expand_path(File.join(File.dirname(__FILE__), 'config', 'google_analytics_account.rb'))
+autoload :AssetServers, File.expand_path(File.join(File.dirname(__FILE__), 'config', 'asset_servers.rb'))
 
-def render_with_layout(file, context = {})
+class ViewHelper
+  def initialize(subject = nil)
+    @subject = subject || OpenStruct.new
+  end
+
+  def asset(path)
+    @@assets_index ||= -1
+    @@assets_index = (@@assets_index + 1) % AssetServers.size
+
+    "#{AssetServers[@@assets_index]}#{path}"
+  end
+
+  def method_missing(method, *args, &block)
+    @subject.send(method, *args, &block)
+  end
+end
+
+def render_with_layout(file, context = nil)
+  context ||= OpenStruct.new
+  view_helper = ViewHelper.new(context)
+
   template = Tilt.new(LAYOUT_TEMPLATE)
-  template.render(context) do
-    Tilt.new(file).render(context)
+  template.render(view_helper) do
+    Tilt.new(file).render(view_helper)
   end
 end
 
