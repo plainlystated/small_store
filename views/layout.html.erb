@@ -1,12 +1,12 @@
 <html>
   <head>
     <title>Creative Retrospection<%= defined?(title) ? ": #{title}" : "" %></title>
-    <link href='/styles/min/creativeretrospection-min.css' rel='stylesheet' type='text/css'>
+    <link href='<%= asset "/styles/min/creativeretrospection-min.css" %>' rel='stylesheet' type='text/css'>
 
     <% if defined?(min_js_includes) && min_js_includes %>
-      <script type="text/javascript" src="/js/min/creativeretrospection-minimal-min.js"></script>
+      <script type="text/javascript" src="<%= asset "/js/min/creativeretrospection-minimal-min.js" %>"></script>
     <% else %>
-      <script type="text/javascript" src="/js/min/creativeretrospection-min.js"></script>
+      <script type="text/javascript" src="<%= asset "/js/min/creativeretrospection-min.js" %>"></script>
     <% end %>
 
     <script type="text/javascript">
