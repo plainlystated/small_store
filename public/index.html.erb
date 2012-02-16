@@ -1,7 +1,7 @@
 <% Sections.reject {|label, section| section.empty? }.each do |label, section| %>
   <div class="product">
     <a href="<%= section.path %>">
-      <img src="<%= section.image %>" class="main main-left">
+      <img src="<%= section.image_path %>" class="main main-left">
     </a>
     <h1><a href="<%= section.path %>" class="black"><%= section.title %></a></h1>
     <p><%= section.description %>
