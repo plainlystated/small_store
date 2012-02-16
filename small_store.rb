@@ -111,9 +111,9 @@ end
 
 def minify
   js_minimal_files = %w[
+    shoppingCart.js
     jquery-1.7.1.min.js
     simpleCart.min.js
-    shoppingCart.js
   ]
   _minify('js', 'creativeretrospection-minimal-min.js', js_minimal_files)
   _minify('js')
