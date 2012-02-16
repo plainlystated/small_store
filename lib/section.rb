@@ -12,6 +12,10 @@ class Section
     products.empty?
   end
 
+  def image_path
+    "/images/section/#{image}"
+  end
+
   def path
     "/#{slug}/"
   end

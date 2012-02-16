@@ -26,7 +26,6 @@ def render_with_layout(file, context = {})
 end
 
 def delete_previous_generation
-  puts "Deleting old files from #{OUTPUT_DIR}"
   Dir[File.join(OUTPUT_DIR, "*")].each do |file|
     puts " - #{file}"
     FileUtils.rm_rf file
@@ -121,6 +120,15 @@ def minify
   _minify('css')
 end
 
+def resize_section_images
+  FileUtils.mkdir_p(File.join(OUTPUT_DIR, "images", "section"))
+
+  Sections.each do |name, section|
+    Resizer.adjust_width(section.image, section.image_path, 300)
+  end
+  Resizer.adjust_width("me.jpg", "/images/me.jpg", 300)
+end
+
 delete_previous_generation
 copy_public_with_templating
 generate_section_pages
@@ -128,7 +136,7 @@ generate_product_pages
 
 minify
 
-# resize_section_images
+resize_section_images
 #resize_product_images
 
 if ARGV[0] == "server"
