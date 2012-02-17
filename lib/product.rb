@@ -21,4 +21,8 @@ class Product
   def slug
     @slug || title.downcase.gsub(/\W/, '-')
   end
+
+  def teaser_image_path
+    "/images/product/teaser/#{slug}.jpg"
+  end
 end

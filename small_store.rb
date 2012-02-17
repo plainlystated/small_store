@@ -148,6 +148,33 @@ def resize_section_images
     Resizer.adjust_width(section.image, section.image_path, 300)
   end
   Resizer.adjust_width("me.jpg", "/images/me.jpg", 300)
+  puts "Resized section images"
+end
+
+def resize_product_images
+  _resize_product_teaser_images
+  _resize_product_page_images
+  puts "Resized product images"
+end
+
+def _resize_product_page_images
+  FileUtils.mkdir_p(File.join(OUTPUT_DIR, "images", "product", "thumbs"))
+  FileUtils.mkdir_p(File.join(OUTPUT_DIR, "images", "product", "large"))
+
+  Products.each do |product|
+    product.images.each do |image|
+      Resizer.adjust_width(image, "/images/product/thumbs/#{image}", 120)
+      Resizer.adjust_width(image, "/images/product/large/#{image}", 550)
+    end
+  end
+end
+
+def _resize_product_teaser_images
+  FileUtils.mkdir_p(File.join(OUTPUT_DIR, "images", "product", "teaser"))
+
+  Products.each do |product|
+    Resizer.adjust_height(product.images.first, product.teaser_image_path, 150)
+  end
 end
 
 delete_previous_generation
@@ -158,7 +185,7 @@ generate_product_pages
 minify
 
 resize_section_images
-#resize_product_images
+resize_product_images
 
 if ARGV[0] == "server"
   require 'webrick'

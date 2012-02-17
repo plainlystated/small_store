@@ -112,7 +112,6 @@ img.main-right {
 }
 img.main {
   margin-top: 0;
-  width: 300;
 }
 
 img.teaser {
@@ -120,7 +119,6 @@ img.teaser {
 }
 
 img.teaser, a.teaser img {
-  height: 150;
   margin: 0 0 0 0;
 }
 
@@ -170,24 +168,22 @@ ul.thumbs img {
 }
 
 img.thumb, a.thumb img {
-  width: 120;
   margin: 0 0 0 0;
 }
 
 #slideshow {
   /* float: right; */
-  width: 550;
+  width: 550px;
   display: inline-block;
   /* padding: 0 0 0 5px; */
   padding: 0;
 }
 #thumbs {
-  width: 150;
+  width: 150px;
   float: left;
 }
 
 #slideshow img {
-  width:550px;
   margin: 0;
 }
 

@@ -1,7 +1,7 @@
 Products << Product.new(
   :title => "A Title",
   :section => Sections[:android],
-  :images => ["/images/android.jpg"],
+  :images => ["android.jpg"],
   :blurb => "A catchy sub-heading",
   :slug => "android-url-seo-friendly",
   :description => ["This is a paragraph", "So is this"],
