@@ -7,8 +7,8 @@
       <ul class="thumbs noscript">
         <% images.each_with_index do |image, i| %>
           <li>
-            <a class="thumb" href="/images/product/large/<%= image %>" title="<%= title %>">
-              <img src="/images/product/thumbs/<%= image %>" alt="<%= title %>" class="<%= i == 0 ? "item_image" : "" %>" />
+            <a class="thumb" href="<%= asset "/images/product/large/#{image}" %>" title="<%= title %>">
+              <img src="<%= asset "/images/product/thumbs/#{image}" %>" alt="<%= title %>" class="<%= i == 0 ? "item_image" : "" %>" />
             </a>
           </li>
         <% end %>
